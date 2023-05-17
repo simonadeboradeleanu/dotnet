@@ -70,6 +70,8 @@ namespace dotnet.Controllers
 
         // GET: api/Users folosind orderBy
         [HttpGet]
+        [Authorize]
+
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
             var users = await _context.Users

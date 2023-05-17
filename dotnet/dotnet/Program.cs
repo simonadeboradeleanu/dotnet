@@ -102,6 +102,13 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
+/* builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy =>
+        policy.RequireRole(Roles.Admin));
+}); */
+
+
 
 
 /*builder.Services.AddDbContext<DataContext>(options =>
