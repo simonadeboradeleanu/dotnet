@@ -1,0 +1,3 @@
+[submodule "dotnet/angulardotnet"]
+	path = dotnet/angulardotnet
+	url = https://github.com/simonadeboradeleanu/angulardotnet
