@@ -3,8 +3,10 @@
     "",
     "\\dotnet",
     "\\dotnet\\dotnet",
-    "\\dotnet\\dotnet\\Controllers"
+    "\\dotnet\\dotnet\\Controllers",
+    "\\dotnet\\dotnet\\Models",
+    "\\dotnet\\dotnet\\NewFolder"
   ],
-  "SelectedNode": "\\dotnet\\dotnet\\Controllers\\UsersController.cs",
+  "SelectedNode": "\\dotnet\\dotnet.sln",
   "PreviewInSolutionExplorer": false
 }
