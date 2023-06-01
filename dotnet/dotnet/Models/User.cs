@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Claims;
 using System.Text.Json.Serialization;
 using proiectelul.Models;
 
@@ -15,5 +16,9 @@ namespace dotnet.Models
 
         [JsonIgnore]
         public List<UserShark>? UserSharks { get; set; }
+
+        /*[JsonIgnore]
+        public List<ClaimUser> ClaimUsers { get; set; }*/
+
     }
 }

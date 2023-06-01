@@ -7,11 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using dotnet.Data;
 using dotnet.Models;
+using System.Security.Claims;
 using dotnet.Migrations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using System.Text;
 
 namespace dotnet.Controllers
@@ -54,8 +54,7 @@ namespace dotnet.Controllers
         {
             
             var users = _context.Users.ToDictionary(u => u.username, u => u.password);
-
-           
+            
             if (users.Any(u => u.Key == user.username && u.Value == user.password))
             {
                 var token = GenerateJwtToken(user.username);
@@ -77,12 +76,10 @@ namespace dotnet.Controllers
             var users = await _context.Users
                                        .OrderBy(u => u.username)
                                        .ToListAsync();
-
             if (users.Count == 0)
             {
                 return NotFound();
             }
-
             return users;
         }
 
@@ -106,6 +103,8 @@ namespace dotnet.Controllers
             return user;
         }
 
+
+
         // PUT: api/Users/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
@@ -116,6 +115,7 @@ namespace dotnet.Controllers
             }
 
             _context.Entry(user).State = EntityState.Modified;
+            
 
             try
             {
@@ -137,6 +137,7 @@ namespace dotnet.Controllers
         }
 
         // POST: api/Users
+        //[Authorize(Policy = "AdminPolicy")]
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
@@ -144,6 +145,15 @@ namespace dotnet.Controllers
           {
               return Problem("Entity set 'DataContext.User'  is null.");
           }
+
+            //var cl = new  Claim("isAdmin", "true");
+
+            //TO REVIEW: build failed la claims
+            /*if (user.admin)
+            {
+                user.ClaimUsers.Add(new ClaimUser("isAdmin", "true", user, cl));
+            }*/
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 

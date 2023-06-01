@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using proiectelul.Models;
 using dotnet.Models;
+using System.Security.Claims;
 
 namespace dotnet.Data
 {
@@ -12,6 +13,9 @@ namespace dotnet.Data
         public DbSet <User> Users { get; set; }
         public DbSet<Detail> Details { get; set; }
         public DbSet<UserShark> UserSharks { get; set; }
+        //public DbSet<Claim> Claims { get; set; }
+        //public DbSet<ClaimUser> UserClaims { get; set; }
+
 
 
 
@@ -20,8 +24,13 @@ namespace dotnet.Data
             /*//din ContextConfiguration aplicand UserConfiguration
             //modelBuilder.AddConfiguration();
             //fluent api*/
+/*
+            modelBuilder.Entity<ClaimUser>()
+            .HasKey(uc => new { uc.User, uc.Claim });*/
+
 
             //one to many
+
             modelBuilder.Entity<Shark>()
                 .HasOne(s => s.Ocean)
                 .WithMany(o => o.Sharks)

@@ -23,7 +23,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "JWTToken_Auth_API",
+        Title = "JWT_Auth_API",
         Version = "v1"
     });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
@@ -48,40 +48,6 @@ builder.Services.AddSwaggerGen(c => {
     });
 });
 
-/*
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo
-    {
-        Title = "jwToken_Auth_API",
-        Version = "v1"
-    });
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "Jwt token cu fromatul bearer[space]token : "
-
-    });
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-        new OpenApiSecurityScheme
-        {
-            Reference = new OpenApiReference
-            {
-                Type=ReferenceType.SecurityScheme,
-                Id="Bearer"
-            }
-        },
-        new string[]{}
-        }
-    });
-}
-); */
 
 
 var key = "elizabalintelizabalint17mai";
@@ -102,11 +68,19 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-/* builder.Services.AddAuthorization(options =>
+/*builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("AdminOnly", policy =>
-        policy.RequireRole(Roles.Admin));
-}); */
+    
+        options.AddPolicy("AdminPolicy", policy =>
+        {
+            policy.RequireClaim("ClaimType", "isAdmin");
+            policy.RequireClaim("ClaimValue", "true");
+        });
+   
+
+});
+*/
+
 
 
 
