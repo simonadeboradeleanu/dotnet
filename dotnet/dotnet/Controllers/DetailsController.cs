@@ -106,7 +106,6 @@ namespace dotnet.Controllers
                     throw;
                 }
             }
-
             return CreatedAtAction("GetDetail", new { id = detail.SharkId }, detail);
         }
 

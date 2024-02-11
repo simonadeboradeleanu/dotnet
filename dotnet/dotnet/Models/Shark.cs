@@ -7,6 +7,7 @@ namespace proiectelul.Models
 {
     public class Shark 
     {
+
         public int Id { get; set; }
         public string Nume { get; set; }
 
@@ -14,7 +15,7 @@ namespace proiectelul.Models
         [JsonIgnore]
         public Ocean? Ocean { get; set; }
 
-        public Detail Detail { get; set; }
+        public Detail? Detail { get; set; }
 
         [JsonIgnore]
         [BindNever]
